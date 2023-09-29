@@ -1,3 +1,27 @@
 .header{
-    font-family: $font-main;
+    background-color: $color-green3;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+   
+}
+.title{
+    font-family: $anton;
+    font-size: 5rem; 
+    color: $color-green;
+    box-shadow: $color-grey;
+    @media all and (min-width: 768px) {
+        font-size: 7rem;
+      }
+    &__sub{
+        font-family: $roboto;
+        font-weight: 400;
+        font-size: 1.3rem;
+        @media all and (min-width: 768px) {
+            font-size: 2rem;
+          }
+    }
 }

@@ -1,3 +1,53 @@
+.main{
+    //background-color: $color-bg;
+    
+}
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    &__input{
+        width: 15rem;
+        height: 3rem;
+        padding-left: 1rem;
+        @media all and (min-width: 768px) {
+            width: 25rem;
+          }
+    }
+    &__button{
+        width: 8rem;
+        height: 2.5rem;
+        border-radius: 5rem;
+        margin-left: 2rem;
+        background-color: $color-grey;
+        border-color:$color-grey;
+        font-family: $roboto;
+        
+    }
+}
+.list{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;justify-items: column;
+    font-family: $roboto;
+    font-size: 1rem;
+    @media all and (min-width: 768px) {
+        font-size: 1.5rem;
+    }
+    &__results{
+        
+    }
+    &__favorites{
+         
+    }
+}
 .img{
-    width: 15rem;
+    width: 10rem;
+    box-shadow: 0 0.4rem 0.8rem $color-grey;
+    margin-top: 1.5rem;
+    @media all and (min-width: 768px) {
+        width: 15rem;
+    }
 }
