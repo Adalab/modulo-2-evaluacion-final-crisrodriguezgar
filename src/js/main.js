@@ -10,19 +10,25 @@ const container = document.querySelector('.js-container');
 // const favsSeries = document.querySelector('.js-favs');
 
 
+let showsList = [];
+//let seriesfavorites = [];
+
+
+
+
 /**** Funciones ****/
 
 // 1. Funcion getApi para meter el FETCH que trae del servidor el listado de series y los pinta en el HTML
 
-function getApi(event){
-  event.preventDefault();
+function getApi(){
   const inputValue = inputSearch.value;
   const url = `//api.tvmaze.com/search/shows?q=${inputValue}`;
   fetch(url)
     .then((response) => response.json())
     .then ((dataApi) => {
+      showsList = dataApi;
       console.log(dataApi);
-      renderSeriesList(dataApi);
+      renderSeriesList(showsList);
     });
 }
 
@@ -31,8 +37,14 @@ function getApi(event){
 function renderSeriesList(seriesList){
   let html = '';
   for (const eachSerie of seriesList) {
+    let imageUrl = '';
+    if (eachSerie.show.image) {
+      imageUrl = eachSerie.show.image.medium;
+    } else {
+      imageUrl = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
+    };
+    html += `<img class="img" src="${imageUrl}">`;
     html += `<h2>${eachSerie.show.name}</h2>`;//show es el nombre del objeto de la API
-    html += `<img class="img" src="${eachSerie.show.image.medium}">`;
   }
   container.innerHTML = html;
 }
@@ -41,13 +53,14 @@ function renderSeriesList(seriesList){
 
 function handleClickSearch (event){
   event.preventDefault();
-  getApi(event);
-  renderSeriesList(seriesList);
+  getApi();
 }
+
+
 
 
 /**** Eventos****/
 
-//Añadir evento del botón buscar
+//Evento del botón buscar
 
 btnSearch.addEventListener('click', handleClickSearch);
