@@ -5,6 +5,7 @@
 
 const inputSearch = document.querySelector('.js-input');
 const btnSearch = document.querySelector('.js-btn-search');
+const btnReset = document.querySelector('.js-btn-reset');
 
 const container = document.querySelector('.js-container');
 const favs = document.querySelector('.js-favs');
@@ -13,23 +14,20 @@ const favs = document.querySelector('.js-favs');
 let showsList = [];
 let showsFavorites = [];
 
-
 /**** Local Storage****/
 //3. Necesito guardar los favoritos en el Local Storage
-
-
-/**** Funciones ****/
-
-// 1. BUSCAR SERIES
-
 
 const showsFavoritesLS= JSON.parse(localStorage.getItem("FavsShows")); 
 
     if(showsFavoritesLS !== null){
       showsFavorites = showsFavoritesLS; 
       renderFavoritesList(showsFavorites);
-    }//como me interesa que cuando reinicio la pagina la serie este ahí perenne, lo pongo fuera de cualqueir funcion 
-  
+    }//como me interesa que cuando reinicio la pagina la serie este ahí perenne, lo pongo fuera de cualqueir funcion
+
+/**** Funciones ****/
+
+// 1. BUSCAR SERIES  
+
 //1.1. Funcion getApi para meter el FETCH que trae del servidor el listado de series y los pinta en el HTML gracias a renderSeriesList que le he pasado como parametro mi array vacío showsList y lo llena con la dataApi
 function getApi(){
   const inputValue = inputSearch.value;
@@ -59,8 +57,8 @@ function renderSerie(eachSerie){
     imageUrl = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
   };
 
-  html += `<ul id=${eachSerie.show.id} class= "js-each-serie">`;
-  html += `<li><img class="img" src="${imageUrl}" alt="Imagen de portada"></li>`;
+  html += `<ul id=${eachSerie.show.id} class= "js-each-serie showList">`;
+  html += `<li><img class="showList__img colorFavs" src="${imageUrl}" alt="Imagen de portada"></li>`;
   html += `<li><h3>${eachSerie.show.name}</h3></li>`;
   html += `</ul>`;
 
@@ -103,8 +101,10 @@ function handleClickFav(event){
   const indexFav = showsFavorites.findIndex(eachSerie => eachSerie.show.id === idShows);
   if(indexFav === -1){
     showsFavorites.push(foundSeries);
+    event.currentTarget.classList.add('colorFavs');
   } else {
     showsFavorites.splice(indexFav, 1);
+    event.currentTarget.classList.remove('colorFavs');
   }
   localStorage.setItem("FavsShows", JSON.stringify(showsFavorites)); //lo pongo aqui porque es lo que quiero guardar en el momento que lo quiero guardar
   
@@ -119,14 +119,21 @@ function addEventFav (){
   }
 }
 
-
 //función manejadora del evento del botón Buscar
 function handleClickSearch (event){
   event.preventDefault();
   getApi();
 }
 
+function handleClickReset(event){
+  event.preventDefault();
+  showsFavorites = []; //declaro dentro de la funcion el array vacio 
+  localStorage.setItem("FavsShows", JSON.stringify(showsFavorites));//borro el localStorage
+  renderFavoritesList(showsFavorites); // se actualiza la vista de la lista vacía
+  addEventFav ();
+}
 
 /**** Eventos****/
 
 btnSearch.addEventListener('click', handleClickSearch);
+btnReset.addEventListener('click', handleClickReset);

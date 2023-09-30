@@ -21,38 +21,72 @@
         height: 2.5rem;
         border-radius: 5rem;
         margin-left: 2rem;
-        background-color: $color-grey;
-        border-color:$color-grey;
+        background-color: $color-green3;
         font-family: $roboto;
         box-shadow: 0 1px 10px 0 grey, 0 1px 3px 0 rgba(0, 0, 0, 0.35);        
     }
 }
-.list{
+.lists{
     display: flex;
-    justify-content: space-around;
     font-family: $roboto;
-    font-size: 1rem;
+    padding-bottom: 2rem;
+}
+
+.containerFavs{
+    background-color: $color-bg;
+    padding: 2rem;
+    width: 15rem;
+    margin: 2rem;
     @media all and (min-width: 768px) {
-        font-size: 1.5rem;
+        width: 20rem;
     }
-    &__results{
-        padding-left: 2rem;
-        width: 60%;
-    }
-    &__favs{
-        padding-left: 2rem;
-        width: 40%;
+    &__list{
+        gap: 0.8rem;
     }
 }
-.img{
-    width: 10rem;
-    box-shadow: 0 0.4rem 0.8rem $color-grey;
-    margin-top: 1.5rem;
-    box-shadow: 0 1px 10px 0 grey, 0 1px 3px 0 rgba(0, 0, 0, 0.35);
-    @media all and (min-width: 768px) {
-        width: 15rem;
+.titleFavs{
+    &__name{
+        font-size: 1.2rem;
+        padding-bottom: 0.8rem;
+    }
+    &__reset{
+        width: 6rem;
+        border-radius: 5rem;
+        background-color: $color-green3;
+        font-family: $roboto;
+        box-shadow: 0 1px 10px 0 grey, 0 1px 3px 0 rgba(0, 0, 0, 0.35);  
     }
 }
-.favorites{
-    background-color: $color-green;
+.containerShows{
+    padding-top: 2rem;
+    @media all and (min-width: 768px) {
+        padding: 2rem;
+    }
+    
+    &____list2{
+        
+        //width: 60%;
+        //flex-wrap: wrap;
+        // display: flex;
+        // flex-direction: row;
+        // flex-wrap: wrap;
+        // justify-content: space-around;
+    }
+}
+.showList{
+    &__img{  
+        width: 10rem;
+        box-shadow: 0 0.4rem 0.8rem $color-grey;
+        margin-top: 1.5rem;
+        box-shadow: 0 1px 10px 0 grey, 0 1px 3px 0 rgba(0, 0, 0, 0.35);
+        margin-bottom: 0.8rem;
+        @media all and (min-width: 768px) {
+            width: 15rem;
+        }
+    }
+}
+.colorFavs{
+    background-color: $color-pink;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
