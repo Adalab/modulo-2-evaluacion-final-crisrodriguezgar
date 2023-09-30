@@ -74,6 +74,7 @@
     }
 }
 .showList{
+    display: inline-block;
     &__img{  
         width: 10rem;
         box-shadow: 0 0.4rem 0.8rem $color-grey;
