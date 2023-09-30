@@ -24,30 +24,35 @@
         background-color: $color-grey;
         border-color:$color-grey;
         font-family: $roboto;
-        
+        box-shadow: 0 1px 10px 0 grey, 0 1px 3px 0 rgba(0, 0, 0, 0.35);        
     }
 }
 .list{
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;justify-items: column;
+    justify-content: space-around;
     font-family: $roboto;
     font-size: 1rem;
     @media all and (min-width: 768px) {
         font-size: 1.5rem;
     }
     &__results{
-        
+        padding-left: 2rem;
+        width: 60%;
     }
-    &__favorites{
-         
+    &__favs{
+        padding-left: 2rem;
+        width: 40%;
     }
 }
 .img{
     width: 10rem;
     box-shadow: 0 0.4rem 0.8rem $color-grey;
     margin-top: 1.5rem;
+    box-shadow: 0 1px 10px 0 grey, 0 1px 3px 0 rgba(0, 0, 0, 0.35);
     @media all and (min-width: 768px) {
         width: 15rem;
     }
+}
+.favorites{
+    background-color: $color-green;
 }

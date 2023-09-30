@@ -14,25 +14,39 @@ let showsList = [];
 let showsFavorites = [];
 
 
+/**** Local Storage****/
+//3. Necesito guardar los favoritos en el Local Storage
+
+
 /**** Funciones ****/
 
 // 1. BUSCAR SERIES
 
-//1.1. Funcion getApi para meter el FETCH que trae del servidor el listado de series y los pinta en el HTML gracias a renderSeriesList que le he pasado como parametro mi array vacío showsList y lo llena con la dataApi
 
+const showsFavoritesLS= JSON.parse(localStorage.getItem("FavsShows")); 
+
+    if(showsFavoritesLS !== null){
+      showsFavorites = showsFavoritesLS; 
+      renderFavoritesList(showsFavorites);
+    }//como me interesa que cuando reinicio la pagina la serie este ahí perenne, lo pongo fuera de cualqueir funcion 
+  
+//1.1. Funcion getApi para meter el FETCH que trae del servidor el listado de series y los pinta en el HTML gracias a renderSeriesList que le he pasado como parametro mi array vacío showsList y lo llena con la dataApi
 function getApi(){
   const inputValue = inputSearch.value;
   const url = `//api.tvmaze.com/search/shows?q=${inputValue}`;
+  
   fetch(url)
     .then((response) => response.json())
     .then ((dataApi) => {
       showsList = dataApi;
+      //localStorage.setItem("shows", JSON.stringify(showsList)); 
       renderSeriesList(showsList);
     })
     .catch((error) => {
       console.error('Ahora mismo no podemos buscarlo, danos unos minutos', error);
     });
 }
+
 
 // 1.2. Devuelve el html de una serie
 
@@ -92,6 +106,8 @@ function handleClickFav(event){
   } else {
     showsFavorites.splice(indexFav, 1);
   }
+  localStorage.setItem("FavsShows", JSON.stringify(showsFavorites)); //lo pongo aqui porque es lo que quiero guardar en el momento que lo quiero guardar
+  
   renderFavoritesList(showsFavorites);
 }
 

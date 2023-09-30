@@ -5,8 +5,7 @@
     align-items: center;
     flex-direction: column;
     padding-top: 4rem;
-    padding-bottom: 4rem;
-   
+    padding-bottom: 4rem;   
 }
 .title{
     font-family: $anton;
@@ -23,5 +22,6 @@
         @media all and (min-width: 768px) {
             font-size: 2rem;
           }
+          
     }
 }
