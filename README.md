@@ -3,7 +3,7 @@
 
 ### ¡Hola soy Cristina! y esta es mi evaluación del módulo 2 en el bootcamp de Adalab.
 
-El ejercicio consiste en desarrollar una aplicación web de búsqueda de series de TV, con **Java Script**que nos permite
+El ejercicio consiste en desarrollar una aplicación web de búsqueda de series de TV, con **Java Script** que nos permite
 des/marcar las series como favoritas y guardarlas en **Local storage**, para que no las pierdas nunca.
 
 El ejercicio también tiene una parte de maquetación con HTML y Sass, pero es recomendable dedicar esfuerzo

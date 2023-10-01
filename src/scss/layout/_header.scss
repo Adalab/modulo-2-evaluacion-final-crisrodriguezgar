@@ -12,6 +12,7 @@
     font-family: $anton;
     font-size: 5rem; 
     color: $color-green;
+    text-shadow: 6px 3px 3px rgb(134, 138, 136);
     @media all and (min-width: 768px){
         font-size: 7rem;
       }
@@ -19,6 +20,7 @@
         font-family: $roboto;
         font-weight: 400;
         font-size: 1.2rem;
+        color: grey;
         @media all and (min-width: 768px) {
             font-size: 1.5rem;
           }

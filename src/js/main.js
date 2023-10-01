@@ -16,19 +16,21 @@ let showsFavorites = [];
 
 /**** Local Storage****/
 //3. Necesito guardar los favoritos en el Local Storage
+//como me interesa que cuando reinicio la pagina la serie este ahí perenne, lo pongo fuera de cualquier funcion
 
 const showsFavoritesLS= JSON.parse(localStorage.getItem("FavsShows")); 
 
     if(showsFavoritesLS !== null){
       showsFavorites = showsFavoritesLS; 
       renderFavoritesList(showsFavorites);
-    }//como me interesa que cuando reinicio la pagina la serie este ahí perenne, lo pongo fuera de cualqueir funcion
+    }
 
 /**** Funciones ****/
 
 // 1. BUSCAR SERIES  
 
-//1.1. Funcion getApi para meter el FETCH que trae del servidor el listado de series y los pinta en el HTML gracias a renderSeriesList que le he pasado como parametro mi array vacío showsList y lo llena con la dataApi
+//1.1. Funcion getApi para meter el FETCH que trae del servidor los datos de las series y los pinta en el HTML gracias a renderSeriesList que le he pasado como parametro mi array vacío showsList y lo llena con la dataApi
+
 function getApi(){
   const inputValue = inputSearch.value;
   const url = `//api.tvmaze.com/search/shows?q=${inputValue}`;
@@ -37,20 +39,16 @@ function getApi(){
     .then((response) => response.json())
     .then ((dataApi) => {
       showsList = dataApi;
-      //localStorage.setItem("shows", JSON.stringify(showsList)); 
       renderSeriesList(showsList);
     })
-    .catch((error) => {
-      console.error('Ahora mismo no podemos buscarlo, danos unos minutos', error);
-    });
 }
 
 
-// 1.2. Devuelve el html de una serie
+// 1.3. Devuelve el html de una serie
 
 function renderSerie(eachSerie){
   let html = ''; //variable vacía de html para luego llenarla con lo que haré después 
-  let imageUrl = '';// esto es una variable vacía para rellenarla según lo que haga el condicional
+  let imageUrl = ''; //variable vacía para rellenarla con una imagen según lo que haga el condicional
   if (eachSerie.show.image){
     imageUrl = eachSerie.show.image.medium;
   } else {
@@ -62,15 +60,15 @@ function renderSerie(eachSerie){
   html += `<li><h3 class="showList__name">${eachSerie.show.name}</h3></li>`;
   html += `</ul>`;
 
-  return html; // esto devuelve la variable de html con los datos de la serie
+  return html;
 }
 
-// 1.3. Funcion con un bucle que recorre el array y llena el container de lo que hice en las lineas 48-51
+// 1.2. Funcion con un bucle que recorre el array y pinta la lista de series ¿como? llena el container de lo que hago en la funcion renderSerie, en las lineas 58-61
 
 function renderSeriesList(listSeries) { 
   container.innerHTML = '';
-  for (const item of listSeries) {
-    container.innerHTML += renderSerie(item);
+  for (const eachSerie of listSeries) {
+    container.innerHTML += renderSerie(eachSerie);
   }
   addEventFav ();
 }
@@ -79,6 +77,7 @@ function renderSeriesList(listSeries) {
 // 2. AÑADIR A FAVORITOS 
 
 //2.4. Necesito pintarlo en el HTML, asi que creo una nueva funcion render pero que sea para las favoritas
+
 function renderFavoritesList(seriesFavoritesList){
   favs.innerHTML = '';
   for (const item of seriesFavoritesList) {
@@ -88,38 +87,38 @@ function renderFavoritesList(seriesFavoritesList){
 }
   
 
-//2.2. Creo la funcion manejadora del handleClickFav que he hecho en la funcion addEventFav
+//2.2. Creo la funcion manejadora handleClickFav que he hecho en la funcion addEventFav, para que cuando haga click identifique la serie con su id
 
 function handleClickFav(event){
   event.preventDefault();
-  console.log(event.currentTarget.id);// es current target porque como el id se lo he puesto a ul es el que escucha el evento
-  const idShows = parseInt(event.currentTarget.id);
+  const idShows = parseInt(event.currentTarget.id);// es current target porque el id se lo he puesto a ul (es el que escucha el evento)
   
-  //2.3. ahora necesito saber cual es el favorito asi que lo busco con el find sobre el array vacio de series
-  let foundSeries = showsList.find(eachSerie => eachSerie.show.id === idShows);// esto busca dentro del array que tengamos (que no lo sabemos y por eso le he dado el id) qué ai necesito
-  //necesito hacer un condicional para comprobar si está o no
+  //2.3. ahora necesito saber cuál es el favorito y me lo devuelva, asi que lo busco con el find sobre el array vacio de series y lo compara con la serie
+  let foundSeries = showsList.find(eachSerie => eachSerie.show.id === idShows); 
+
+  //necesito hacer un condicional para buscar la posicion y así comprobar si está o no, y además añadirlo o quitarlo
   const indexFav = showsFavorites.findIndex(eachSerie => eachSerie.show.id === idShows);
   if(indexFav === -1){
     showsFavorites.push(foundSeries);
-    event.currentTarget.classList.add('colorFavs');//esto es para añadir la clase colorsFavs y cambie el color de la serie cuando pinchas
+    event.currentTarget.classList.add('colorFavs');//esto es para añadir la clase colorsFavs y cambie el color y la fuente de la serie cuando pincho
   } else {
     showsFavorites.splice(indexFav, 1);
     event.currentTarget.classList.remove('colorFavs');//esto quita la clase
   }
-  localStorage.setItem("FavsShows", JSON.stringify(showsFavorites)); //lo pongo aqui porque es lo que quiero guardar en el momento que lo quiero guardar
+  localStorage.setItem("FavsShows", JSON.stringify(showsFavorites)); //lo pongo aqui porque es lo que quiero guardar y justo el momento que lo quiero guardar
   
   renderFavoritesList(showsFavorites);
 }
 
-//2.1 Creo la funcion para recorrer el Array y coger cada una de las series para poderle añadir el evento
+//2.1 Creo la funcion con un bucle para recorrer el Array y con el query selectorAll obtengo todas las series y le añado un evento click
 function addEventFav (){
   const seriesListAll = document.querySelectorAll('.js-each-serie');//coge cada una de las series
   for (const item of seriesListAll) {
     item.addEventListener('click', handleClickFav);
   }
 }
+/****funciones manejadoras de los botones****/
 
-//función manejadora del evento del botón Buscar
 function handleClickSearch (event){
   event.preventDefault();
   getApi();
