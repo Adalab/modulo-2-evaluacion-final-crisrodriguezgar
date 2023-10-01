@@ -62,16 +62,6 @@
     @media all and (min-width: 768px) {
         padding: 2rem;
     }
-    
-    &____list2{
-        
-        //width: 60%;
-        //flex-wrap: wrap;
-        // display: flex;
-        // flex-direction: row;
-        // flex-wrap: wrap;
-        // justify-content: space-around;
-    }
 }
 .showList{
     display: inline-block;
@@ -85,9 +75,15 @@
             width: 15rem;
         }
     }
+    &__name{
+        margin-left: 1rem;
+        margin-right: 1rem;
+        padding-bottom: 1rem;
+    }
 }
 .colorFavs{
     background-color: $color-pink;
     margin-left: 1rem;
     margin-right: 1rem;
+    
 }

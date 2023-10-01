@@ -59,7 +59,7 @@ function renderSerie(eachSerie){
 
   html += `<ul id=${eachSerie.show.id} class= "js-each-serie showList">`;
   html += `<li><img class="showList__img colorFavs" src="${imageUrl}" alt="Imagen de portada"></li>`;
-  html += `<li><h3>${eachSerie.show.name}</h3></li>`;
+  html += `<li><h3 class="showList__name">${eachSerie.show.name}</h3></li>`;
   html += `</ul>`;
 
   return html; // esto devuelve la variable de html con los datos de la serie
@@ -101,10 +101,10 @@ function handleClickFav(event){
   const indexFav = showsFavorites.findIndex(eachSerie => eachSerie.show.id === idShows);
   if(indexFav === -1){
     showsFavorites.push(foundSeries);
-    event.currentTarget.classList.add('colorFavs');
+    event.currentTarget.classList.add('colorFavs');//esto es para añadir la clase colorsFavs y cambie el color de la serie cuando pinchas
   } else {
     showsFavorites.splice(indexFav, 1);
-    event.currentTarget.classList.remove('colorFavs');
+    event.currentTarget.classList.remove('colorFavs');//esto quita la clase
   }
   localStorage.setItem("FavsShows", JSON.stringify(showsFavorites)); //lo pongo aqui porque es lo que quiero guardar en el momento que lo quiero guardar
   
