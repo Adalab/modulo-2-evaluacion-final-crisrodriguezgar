@@ -4,8 +4,8 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding-top: 4rem;
-    padding-bottom: 4rem; 
+    padding-top: 2rem;
+    padding-bottom: 3rem; 
     box-shadow: 0 1px 10px 0 grey, 0 1px 3px 0 rgba(0, 0, 0, 0.35);  
 }
 .title{
@@ -18,9 +18,9 @@
     &__sub{
         font-family: $roboto;
         font-weight: 400;
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         @media all and (min-width: 768px) {
-            font-size: 2rem;
+            font-size: 1.5rem;
           }
     }
 }

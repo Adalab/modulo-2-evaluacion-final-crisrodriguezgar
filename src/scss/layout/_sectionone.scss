@@ -20,6 +20,7 @@
         width: 8rem;
         height: 2.5rem;
         border-radius: 5rem;
+        border-color: $color-green3;
         margin-left: 2rem;
         background-color: $color-green3;
         font-family: $roboto;
@@ -52,6 +53,7 @@
     &__reset{
         width: 6rem;
         border-radius: 5rem;
+        border-color: $color-green3;
         background-color: $color-green3;
         font-family: $roboto;
         box-shadow: 0 1px 10px 0 grey, 0 1px 3px 0 rgba(0, 0, 0, 0.35);  
@@ -85,5 +87,5 @@
     background-color: $color-pink;
     margin-left: 1rem;
     margin-right: 1rem;
-    
+    font-family: $anton;
 }
