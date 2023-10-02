@@ -126,10 +126,16 @@ function handleClickSearch (event){
 
 function handleClickReset(event){
   event.preventDefault();
-  showsFavorites = []; //declaro dentro de la funcion el array vacio 
+  showsFavorites = []; //declaro dentro de la funcion el array vacio, para borrar la lista 
   localStorage.setItem("FavsShows", JSON.stringify(showsFavorites));//borro el localStorage
   renderFavoritesList(showsFavorites); // se actualiza la vista de la lista vacía
-  addEventFav ();
+  
+  const colorFavElements = document.querySelectorAll('.colorFavs');//recojo todos los elementos que tengan la clase colorFavs
+  for (const element of colorFavElements) {
+    element.classList.remove('colorFavs');
+  }
+  
+  addEventFav();// vuelvo a poner esto para poder volver hacer click
 }
 
 /**** Eventos****/

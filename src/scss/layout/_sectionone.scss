@@ -85,6 +85,8 @@
         margin-bottom: 0.8rem;
         cursor: pointer;
         border-radius: 0.8rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
         &:hover{ 
             transition-duration: 0.8s;
             transform: scale(1.1);
@@ -101,7 +103,6 @@
 }
 .colorFavs{
     background-color: $color-pink;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    font-family: $anton;
+    color: grey;
+    border-radius: 1rem;
 }
