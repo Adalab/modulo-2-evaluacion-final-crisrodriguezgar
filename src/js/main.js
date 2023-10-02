@@ -43,12 +43,12 @@ function getApi(){
     })
 }
 
-
 // 1.3. Devuelve el html de una serie
 
 function renderSerie(eachSerie){
-  let html = ''; //variable vacía de html para luego llenarla con lo que haré después 
-  let imageUrl = ''; //variable vacía para rellenarla con una imagen según lo que haga el condicional
+  let html = ''; 
+  let imageUrl = ''; 
+  
   if (eachSerie.show.image){
     imageUrl = eachSerie.show.image.medium;
   } else {
@@ -103,9 +103,9 @@ function handleClickFav(event){
     event.currentTarget.classList.add('colorFavs');//esto es para añadir la clase colorsFavs y cambie el color y la fuente de la serie cuando pincho
   } else {
     showsFavorites.splice(indexFav, 1);
-    event.currentTarget.classList.remove('colorFavs');//esto quita la clase
+    event.currentTarget.classList.remove('colorFavs');
   }
-  localStorage.setItem("FavsShows", JSON.stringify(showsFavorites)); //lo pongo aqui porque es lo que quiero guardar y justo el momento que lo quiero guardar
+  localStorage.setItem("FavsShows", JSON.stringify(showsFavorites)); //3.1. lo pongo aqui porque es lo que quiero guardar y justo el momento que lo quiero guardar
   
   renderFavoritesList(showsFavorites);
 }
@@ -117,6 +117,10 @@ function addEventFav (){
     item.addEventListener('click', handleClickFav);
   }
 }
+
+
+// BOTONES
+
 /****funciones manejadoras de los botones****/
 
 function handleClickSearch (event){
@@ -134,11 +138,10 @@ function handleClickReset(event){
   for (const element of colorFavElements) {
     element.classList.remove('colorFavs');
   }
-  
-  addEventFav();// vuelvo a poner esto para poder volver hacer click
+  addEventFav();
 }
 
-/**** Eventos****/
+/**** Eventos***/
 
 btnSearch.addEventListener('click', handleClickSearch);
 btnReset.addEventListener('click', handleClickReset);
