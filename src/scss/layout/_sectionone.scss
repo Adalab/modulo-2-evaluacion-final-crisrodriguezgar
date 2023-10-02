@@ -23,8 +23,8 @@
         box-shadow: 0 1px 10px 0 grey, 0 1px 3px 0 rgba(0, 0, 0, 0.35);
         cursor: pointer;
         color: grey;
+        transition-duration: 0.8s;
         &:hover{ 
-            transition-duration: 0.8s;
             background-color: $color-green;
             border-color: $color-green3;
         }     
@@ -38,7 +38,7 @@
 
 .containerFavs{
     background-color: $color-bg;
-    padding: 2rem;
+    padding: 1.5rem;
     width: 35rem;
     margin: 2rem;
     @media all and (min-width: 768px) {
@@ -49,12 +49,17 @@
     }
 }
 .titleFavs{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     &__name{
+        margin-top: 0.8rem;
         font-size: 1.2rem;
         padding-bottom: 0.8rem;
     }
     &__reset{
-        width: 6rem;
+        width: 5.5rem;
+        margin-left: 0.8rem;
         border-radius: 5rem;
         border-color: $color-green3;
         background-color: $color-green3;
@@ -62,8 +67,8 @@
         box-shadow: 0 1px 10px 0 grey, 0 1px 3px 0 rgba(0, 0, 0, 0.35);
         color: grey;
         cursor: pointer;
+        transition-duration: 0.8s;
         &:hover{ 
-            transition-duration: 0.8s;
             background-color: $color-green;
             border-color: $color-green3;
         }
@@ -89,8 +94,8 @@
         border-radius: 0.8rem;
         margin-left: 1rem;
         margin-right: 1rem;
+        transition-duration: 0.8s;
         &:hover{ 
-            transition-duration: 0.8s;
             transform: scale(1.1);
         }
         @media all and (min-width: 768px) {
