@@ -6,6 +6,7 @@
 const inputSearch = document.querySelector('.js-input');
 const btnSearch = document.querySelector('.js-btn-search');
 const btnReset = document.querySelector('.js-btn-reset');
+const btnLOG = document.querySelector('.js-btn-log')
 
 const container = document.querySelector('.js-container');
 const favs = document.querySelector('.js-favs');
@@ -58,6 +59,7 @@ function renderSerie(eachSerie){
   html += `<ul id=${eachSerie.show.id} class= "js-each-serie showList">`;
   html += `<li><img class="showList__img colorFavs" src="${imageUrl}" alt="Imagen de portada"></li>`;
   html += `<li><h3 class="showList__name">${eachSerie.show.name}</h3></li>`;
+  html += `<li><p class="">${eachSerie.show.status}</p></li>`;
   html += `</ul>`;
 
   return html;
@@ -141,7 +143,17 @@ function handleClickReset(event){
   addEventFav();
 }
 
+function handleClickLog(event){
+  event.preventDefault();
+  const favsTitle = showsFavorites;
+  for (const item of favsTitle){
+    item.show.name
+    console.log(item.show.name);
+  }
+}
+
 /**** Eventos***/
 
 btnSearch.addEventListener('click', handleClickSearch);
 btnReset.addEventListener('click', handleClickReset);
+btnLOG. addEventListener('click', handleClickLog);
