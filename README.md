@@ -1,28 +1,43 @@
 
-# Evaluación módulo 2. Buscador de series
+# Java Script website: Series finder website
 
-### ¡Hola soy Cristina! y esta es mi evaluación del módulo 2 en el bootcamp de Adalab.
+This is my new Javascript website where you can search series and check like favorites.
 
-El ejercicio consiste en desarrollar una aplicación web de búsqueda de series de TV, con **Java Script** que nos permite:
+<img src="./src/images/sofaLovers.PNG" width="445"/>
 
-- Recoger los datos de series de la **API TVMaze**
-- Realizar una búsqueda con esos datos
-- Marcar y desmarcar las series como favoritas 
-- Guardar las series en **Local storage**, para que no las pierdas nunca.
+## 📋 Initial Requeriments
 
-El ejercicio también tiene una parte de maquetación con HTML y Sass libre, pero es recomendable dedicar esfuerzo a la maquetación una vez terminada la parte de JavaScript, ya que los criterios de evaluación están relacionados con esta última.
+- The website must fetch from **TVMaze API**
+- Mark and unmark series as favorites
+- Save the series in **Local storage**, so you never lose them.
 
-### Tecnologías utilizadas
+## 🌟 Quality Requirements
+
+- Semantic must be right.
+- Responsive website.
+
+
+## 🔨 Built with
+
 - **Visual Studio Code**
 - **HTML**
 - **SASS** 
 - **Java Script**
-- **Adalab web started kit**
 
-### Autor
+## 🐑🐑 Want to clone my repository?
+
+Go for it! And if you make something pretty, please show me.
+  
+## ✏️ Do you have any idea? 
+
+I'm an student and as I stated before am learning a whole lot of Front End Developing, so, if  you have any idea that I could develope please tell me so and I will try to.
+
+## 🙍‍♀️ Autor
 
 [![Autor](https://img.shields.io/badge/-%20Cristina%20Rodriguez%20-%20pink?logo=github&labelColor=grey&color=rgb(240%2C%2093%2C%20215))](https://github.com/crisrodriguezgar)
 
-¡Espero que la disfrutéis!
+## 🏆 Codefactor
 
-![Adalab](https://beta.adalab.es/resources/images/adalab-logo-155x61-bg-white.png)
+[![CodeFactor](https://www.codefactor.io/repository/github/crisrodriguezgar/sofalovers/badge)](https://www.codefactor.io/repository/github/crisrodriguezgar/sofalovers)
+
+### Enjoy it!

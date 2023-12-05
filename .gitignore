@@ -1,6 +1,4 @@
 # Created by https://www.gitignore.io/api/sass,node,bower,macos
-# desktop
-.desktop.ini
 
 # Bower
 bower_components
@@ -57,3 +55,6 @@ public
 
 # vscode
 .vscode
+
+# desktop
+.desktop.ini

@@ -10,6 +10,7 @@
     width: 15rem;
     height: 3rem;
     padding-left: 1rem;
+    
     @media all and (min-width: 768px) {
       width: 25rem;
     }
@@ -31,6 +32,9 @@
       border-color: $color-green3;
     }
   }
+  &__icon{
+    color:grey;
+  }
 }
 
 .lists {
@@ -49,18 +53,15 @@
   @media all and (min-width: 768px) {
     width: 20rem;
   }
-  &__list {
-    gap: 0.8rem;
-  }
 }
 .titleFavs {
-  display: inline-block;
+  display: flex;
+  justify-content: space-evenly;
   width: 15rem;
   @media all and (min-width: 768px) {
     width: 20rem;
   }
   &__name {
-    width: 10rem;
     margin-block: 0.8rem;
     font-size: 1.3rem;
     @media all and (min-width: 768px) {
@@ -68,8 +69,7 @@
     }
   }
   &__reset {
-    margin: 0.8rem;
-    padding-block: 0.3rem;
+    padding-block: 0.2rem;
     padding-inline: 1rem;
     border-radius: 5rem;
     border: none;
@@ -83,8 +83,8 @@
       background-color: $color-green;
     }
     @media all and (min-width: 768px) {
-      padding-block: 0.6rem;
-      padding-inline: 1.6rem;
+      padding-block: 0.5rem;
+      padding-inline: 1.5rem;
     }
   }
 }
@@ -119,6 +119,7 @@
     transition-duration: 0.8s;
     &:hover {
       transform: scale(1.1);
+      //filter: blur(2px);
     }
     @media all and (min-width: 768px) {
       width: 15rem;

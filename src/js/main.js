@@ -5,7 +5,6 @@
 const inputSearch = document.querySelector('.js-input');
 const btnSearch = document.querySelector('.js-btn-search');
 const btnReset = document.querySelector('.js-btn-reset');
-const btnLOG = document.querySelector('.js-btn-log');
 
 const container = document.querySelector('.js-container');
 const favs = document.querySelector('.js-favs');
@@ -38,6 +37,7 @@ function getApi() {
     .then((response) => response.json())
     .then((dataApi) => {
       showsList = dataApi;
+
       renderSeriesList(showsList);
     });
 }
@@ -48,14 +48,14 @@ function renderSerie(eachSerie) {
   let html = '';
   let imageUrl = '';
 
-  if (eachSerie.show.image) {
+  if (eachSerie.show.image && eachSerie.show.image.medium) {
     imageUrl = eachSerie.show.image.medium;
   } else {
     imageUrl = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
   }
 
-  html += `<ul id=${eachSerie.show.id} class= "js-each-serie showList">`;
-  html += `<li><img class="showList__img colorFavs" src="${imageUrl}" alt="Imagen de portada"></li>
+  html += `<ul id="${eachSerie.show.id}" class= "js-each-serie showList">
+  <li><img class="showList__img colorFavs" src="${imageUrl}" alt="${eachSerie.show.name}">
   <h3 class="showList__name">${eachSerie.show.name}</h3></li>`;
 
   return html;
@@ -78,7 +78,8 @@ function renderSeriesList(listSeries) {
 function renderFavoritesList(seriesFavoritesList) {
   favs.innerHTML = '';
   for (const item of seriesFavoritesList) {
-    favs.innerHTML += renderSerie(item);
+    const favHtml = renderSerie(item, false);
+    favs.innerHTML += favHtml;
   }
   addEventFav();
 }
@@ -108,6 +109,11 @@ function handleClickFav(event) {
   localStorage.setItem('FavsShows', JSON.stringify(showsFavorites)); //3.1. lo pongo aqui porque es lo que quiero guardar y justo el momento que lo quiero guardar
 
   renderFavoritesList(showsFavorites);
+
+  // const favClicked = document.getElementById(idShows);
+  // if (favClicked) {
+  //   favClicked.classList.add('colorFavs');
+  // }
 }
 
 //2.1 Creo la funcion con un bucle para recorrer el Array y con el query selectorAll obtengo todas las series y le añado un evento click
@@ -140,17 +146,7 @@ function handleClickReset(event) {
   addEventFav();
 }
 
-function handleClickLog(event) {
-  event.preventDefault();
-  const favsTitle = showsFavorites;
-  for (const item of favsTitle) {
-    item.show.name;
-    console.log(item.show.name);
-  }
-}
-
 /**** Eventos***/
 
 btnSearch.addEventListener('click', handleClickSearch);
 btnReset.addEventListener('click', handleClickReset);
-btnLOG.addEventListener('click', handleClickLog);
